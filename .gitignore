@@ -1,17 +1,10 @@
-# OS & editors
 .DS_Store
 .idea/
 .vscode/
-
-# Dependencies & build outputs
 node_modules/
 dist/
 build/
 *.map
-
-# Env files
 .env
 .env.*
-
-# Shopify store-specific customizer settings (do NOT commit)
 config/settings_data.json
