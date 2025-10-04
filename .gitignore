@@ -7,4 +7,4 @@ build/
 *.map
 .env
 .env.*
-config/settings_data.json
+
