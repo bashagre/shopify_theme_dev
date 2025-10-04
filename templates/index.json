@@ -16,7 +16,11 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
+<<<<<<< HEAD
             "text": "<p>Browse our latest products local3</p>",
+=======
+            "text": "<p>Browse our latest products Live</p>",
+>>>>>>> origin/main
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
