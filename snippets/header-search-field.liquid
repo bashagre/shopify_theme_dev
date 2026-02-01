@@ -1,0 +1,20 @@
+{% liquid
+  assign extra_class = class | default: ''
+%}
+
+<form action="{{ routes.search_url }}" method="get" role="search" class="header-search-field {{ extra_class | strip }}">
+  <input
+    class="header-search-field__input"
+    type="search"
+    name="q"
+    value="{{ search.terms | escape }}"
+    placeholder="What are you looking for?"
+    aria-label="Search"
+  >
+
+  <button class="header-search-field__button" type="submit" aria-label="Search">
+    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16Zm11 3-6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+</form>

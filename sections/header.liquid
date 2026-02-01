@@ -91,9 +91,15 @@
       endif
     endif
   endif
+  //capture search
+  //  render 'search', style: search_style, class: search_class
+  //endcapture
   capture search
-    render 'search', style: search_style, class: search_class
-  endcapture
+  if section.settings.show_search
+    render 'header-search-field', class: 'mobile:hidden'
+  endif
+endcapture
+
 
   # Skip mobile search under specific conditions:
   # Always render if search_row is bottom
