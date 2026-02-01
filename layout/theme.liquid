@@ -36,11 +36,11 @@
   </head>
 
   <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
+    {% render 'tutorial' %}
     {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
     <div id="header-group">
       {% sections 'header-group' %}
     </div>
-    <p>Hello World from Git</p>
 
     <script
       src="{{ 'critical.js' | asset_url }}"
