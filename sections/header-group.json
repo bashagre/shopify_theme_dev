@@ -32,7 +32,7 @@
         "announcement_BxgCk9"
       ],
       "custom_css": [
-        ".announcement-bar {background-color: #5b2928 !important; color: #ffffff}"
+        ".announcement-bar {background-color: #5b2928 !important; color: #ffffff;}"
       ],
       "name": "t:names.announcement_bar",
       "settings": {
@@ -66,7 +66,7 @@
           "static": true,
           "settings": {
             "menu": "main-menu",
-            "menu_style": "featured_products",
+            "menu_style": "text",
             "featured_products_aspect_ratio": "4 / 5",
             "featured_collections_aspect_ratio": "16 / 9",
             "image_border_radius": 0,
