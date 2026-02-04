@@ -1,0 +1,224 @@
+{% style %}
+  #split-hero-{{ section.id }}{
+    --split-hero-min-height: {{ section.settings.min_height }}px;
+    --split-hero-radius: {{ section.settings.radius }}px;
+    --split-hero-gap: 0px;
+
+    --split-hero-bg: {{ section.settings.panel_bg }};
+    --split-hero-text: {{ section.settings.text_color }};
+    --split-hero-btn-bg: {{ section.settings.button_bg }};
+    --split-hero-btn-text: {{ section.settings.button_text }};
+    --split-hero-btn-border: {{ section.settings.button_border }};
+  }
+
+  #split-hero-{{ section.id }} .split-hero{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    border-radius: var(--split-hero-radius);
+    min-height: var(--split-hero-min-height);
+    gap: var(--split-hero-gap);
+  }
+
+  #split-hero-{{ section.id }} .split-hero__media{
+    position: relative;
+    min-height: var(--split-hero-min-height);
+    background: #f2f2f2;
+  }
+
+  #split-hero-{{ section.id }} .split-hero__media img{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #split-hero-{{ section.id }} .split-hero__panel{
+    background: var(--split-hero-bg);
+    color: var(--split-hero-text);
+    display: flex;
+    align-items: center;
+  }
+
+  #split-hero-{{ section.id }} .split-hero__content{
+    padding: 64px;
+    max-width: 520px;
+  }
+
+  #split-hero-{{ section.id }} .split-hero__heading{
+    margin: 0 0 14px 0;
+    line-height: 1.05;
+  }
+
+  #split-hero-{{ section.id }} .split-hero__subtext{
+    margin: 0 0 22px 0;
+    opacity: 0.9;
+  }
+
+  #split-hero-{{ section.id }} .split-hero__btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 22px;
+    border-radius: 8px;
+    background: var(--split-hero-btn-bg);
+    color: var(--split-hero-btn-text);
+    border: 1px solid var(--split-hero-btn-border);
+    text-decoration: none;
+    transition: opacity .2s ease;
+  }
+
+  #split-hero-{{ section.id }} .split-hero__btn:hover{
+    opacity: 0.9;
+  }
+
+  /* Mobile */
+  @media (max-width: 989px){
+    #split-hero-{{ section.id }} .split-hero{
+      grid-template-columns: 1fr;
+    }
+
+    #split-hero-{{ section.id }} .split-hero__content{
+      padding: 28px;
+      max-width: 100%;
+    }
+
+    #split-hero-{{ section.id }} .split-hero__media{
+      min-height: 320px;
+    }
+  }
+{% endstyle %}
+
+<section id="split-hero-{{ section.id }}" class="section">
+  <div class="section section--{{ section.settings.section_width }}">
+    <div class="split-hero">
+      {% if section.settings.image != blank %}
+        <div class="split-hero__media">
+          {{ section.settings.image | image_url: width: 2400 | image_tag: loading: 'lazy' }}
+        </div>
+      {% else %}
+        <div class="split-hero__media"></div>
+      {% endif %}
+
+      <div class="split-hero__panel">
+        <div class="split-hero__content">
+          {% if section.settings.heading != blank %}
+            <div class="split-hero__heading">
+              {{ section.settings.heading }}
+            </div>
+          {% endif %}
+
+          {% if section.settings.text != blank %}
+            <div class="split-hero__subtext">
+              {{ section.settings.text }}
+            </div>
+          {% endif %}
+
+          {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+            <a class="split-hero__btn" href="{{ section.settings.button_link }}">
+              {{ section.settings.button_label }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Split hero (custom)",
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section width",
+      "default": "page-width",
+      "options": [
+        { "value": "page-width", "label": "Page" },
+        { "value": "full-width", "label": "Full" }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Left image"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>No Flatpack,<br><em>No Fuss</em></p>"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Just fully assembled furniture.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Discover The Range"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "color",
+      "id": "panel_bg",
+      "label": "Right panel background",
+      "default": "#e6e1d8"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#4a4a4a"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button background",
+      "default": "#e6e1d8"
+    },
+    {
+      "type": "color",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "#4a4a4a"
+    },
+    {
+      "type": "color",
+      "id": "button_border",
+      "label": "Button border",
+      "default": "#b6b1a9"
+    },
+    {
+      "type": "range",
+      "id": "min_height",
+      "label": "Minimum height (desktop)",
+      "min": 360,
+      "max": 720,
+      "step": 20,
+      "default": 520
+    },
+    {
+      "type": "range",
+      "id": "radius",
+      "label": "Corner radius",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "default": 0
+    }
+  ],
+  "presets": [
+    { "name": "Split hero (custom)" }
+  ]
+}
+{% endschema %}
