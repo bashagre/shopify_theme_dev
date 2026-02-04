@@ -17,7 +17,7 @@
         "announcement_BxgCk9": {
           "type": "_announcement",
           "settings": {
-            "text": "Welcome to our store",
+            "text": "FEBRUARY SALE!!! SAVE 15% ON SELECT ITEMS",
             "link": "",
             "font": "var(--font-subheading--family)",
             "font_size": "0.75rem",
@@ -30,6 +30,9 @@
       },
       "block_order": [
         "announcement_BxgCk9"
+      ],
+      "custom_css": [
+        ".announcement-bar {background-color: #5b2928 !important; color: #ffffff}"
       ],
       "name": "t:names.announcement_bar",
       "settings": {
